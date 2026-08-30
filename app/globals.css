@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+/* :root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+
+@import "tailwindcss";
+
+@layer components {
+.card {
+@apply bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-white/20;
+}
+
+.metric-card {
+@apply bg-gradient-to-br from-white/90 to-white/70 backdrop-blur-sm rounded-xl p-4 shadow-md border border-white/30;
+}
+
+.comfort-excellent {
+@apply bg-gradient-to-r from-green-400 to-emerald-500;
+}
+
+.comfort-good {
+@apply bg-gradient-to-r from-blue-400 to-cyan-500;
+}
+
+.comfort-moderate {
+@apply bg-gradient-to-r from-yellow-400 to-orange-500;
+}
+
+.comfort-poor {
+@apply bg-gradient-to-r from-orange-500 to-red-500;
+}
+
+.comfort-very-poor {
+@apply bg-gradient-to-r from-red-500 to-purple-600;
+}
+}
