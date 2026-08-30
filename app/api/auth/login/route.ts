@@ -1,6 +1,4 @@
-// app/api/auth/login/route.ts
 import { NextRequest, NextResponse } from "next/server";
-import { SignJWT } from "jose";
 import { cookies } from "next/headers";
 
 

@@ -1,4 +1,3 @@
-// types/weather.ts
 export interface CityWeather {
   CityCode: string;
   CityName: string;

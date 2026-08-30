@@ -1,4 +1,3 @@
-// components/ComfortRankingList.tsx
 "use client";
 
 import { ComfortRanking } from "../types/weather";

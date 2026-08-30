@@ -1,4 +1,3 @@
-// components/LoginForm.tsx
 "use client";
 
 import { useState } from "react";
@@ -24,7 +23,6 @@ export default function LoginForm() {
 
     try {
       await login(email, password);
-      // The mfaRequired state will be updated by the AuthProvider
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");
     } finally {
@@ -59,7 +57,6 @@ export default function LoginForm() {
     }
   };
 
-  // Show MFA verification form if required
   if (mfaRequired) {
     return (
       <div className="card">
@@ -150,7 +147,6 @@ export default function LoginForm() {
     );
   }
 
-  // Regular login form
   return (
     <div className="card">
       <h2 className="text-2xl font-bold text-gray-800 mb-2 text-center">

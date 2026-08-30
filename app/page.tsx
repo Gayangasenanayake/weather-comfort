@@ -1,4 +1,3 @@
-// app/page.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -22,12 +21,10 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
 
-  // Fetch all cities on initial load
   useEffect(() => {
     fetchCities();
   }, []);
 
-  // Fetch comfort rankings when user is authenticated
   useEffect(() => {
     if (user && !mfaRequired) {
       fetchComfortRankings();
@@ -38,7 +35,7 @@ export default function Home() {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/cities`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/cities`);
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || "Failed to fetch cities");
@@ -57,7 +54,7 @@ export default function Home() {
     setIsRankingLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://127.0.0.1:8000/api/weather/sorted-by-comfort`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/weather/sorted-by-comfort`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json',
@@ -85,7 +82,7 @@ export default function Home() {
     setError(null);
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://127.0.0.1:8000/api/weather/city/${encodeURIComponent(cityCode)}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/weather/city/${encodeURIComponent(cityCode)}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json',
@@ -213,7 +210,6 @@ export default function Home() {
 
       
 
-      {/* Cities Grid */}
       {isLoading ? (
         <div className="flex items-center justify-center min-h-[40vh]">
           <div className="text-center">
@@ -244,7 +240,6 @@ export default function Home() {
         </div>
       )}
 
-{/* Comfort Rankings Section - Only for Authenticated Users */}
       {user && !mfaRequired && (
         <div className="m-8">
           <ComfortRankingList 

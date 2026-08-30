@@ -1,4 +1,3 @@
-// components/WeatherDetails.tsx
 interface WeatherDetailsProps {
   comfortFactors: {
     temperature_factor: number;

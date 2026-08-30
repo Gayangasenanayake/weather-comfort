@@ -1,4 +1,3 @@
-// components/WeatherCard.tsx
 import { WeatherResponse } from "../types/weather";
 
 export default function WeatherCard({ data }: { data: WeatherResponse }) {
@@ -45,11 +44,7 @@ export default function WeatherCard({ data }: { data: WeatherResponse }) {
           alt={data.weather_condition}
           className="w-20 h-20"
         />
-        {/* {data.ranking && (
-          <div className="absolute -top-2 -right-2 text-2xl">
-            {rankingEmoji}
-          </div>
-        )} */}
+        
       </div>
       
       {/* Weather Condition */}

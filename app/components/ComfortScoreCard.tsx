@@ -1,4 +1,3 @@
-// components/ComfortScoreCard.tsx
 interface ComfortScoreCardProps {
   score: number;
   category: string;

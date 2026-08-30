@@ -1,4 +1,3 @@
-// components/WeatherDashboard.tsx
 "use client";
 
 import WeatherCard from "./WeatherCard";

@@ -1,4 +1,3 @@
-// app/api/weather/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 
@@ -6,7 +5,6 @@ const JWT_SECRET = new TextEncoder().encode(
   process.env.JWT_SECRET || "your-secret-key-change-in-production"
 );
 
-// This is a proxy to your backend API
 const BACKEND_API_URL = process.env.BACKEND_API_URL;
 
 export async function GET(request: NextRequest) {
@@ -21,7 +19,6 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Check authentication
     const token = request.cookies.get("token")?.value;
     let isAuthenticated = false;
     let user = null;
@@ -35,11 +32,9 @@ export async function GET(request: NextRequest) {
           name: payload.name,
         };
       } catch (error) {
-        // Token invalid, serve limited data
       }
     }
 
-    // Forward request to your backend API
     const response = await fetch(
       `${BACKEND_API_URL}/weather?city=${encodeURIComponent(city)}`,
       {
@@ -57,7 +52,6 @@ export async function GET(request: NextRequest) {
 
     const data = await response.json();
 
-    // Return the data from your backend
     return NextResponse.json({
       weather: {
         city: data.city_name || data.city,

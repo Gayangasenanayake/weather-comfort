@@ -1,4 +1,3 @@
-// components/CityCard.tsx
 "use client";
 
 import { CityWeather } from "../types/weather";

@@ -1,4 +1,3 @@
-// components/AuthProvider.tsx
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
@@ -32,7 +31,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       const token = localStorage.getItem('token');
       if (token) {
-        const response = await fetch("http://127.0.0.1:8000/api/user", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/user`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Accept': 'application/json',
@@ -57,7 +56,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (email: string, password: string) => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/auth/login", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/auth/login`, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -99,7 +98,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/auth/verify-mfa", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/auth/verify-mfa`, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -136,7 +135,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/resend-mfa", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/resend-mfa`, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -157,7 +156,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const register = async (name: string, email: string, password: string, password_confirmation: string) => {
-    const response = await fetch("http://127.0.0.1:8000/api/register", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/register`, {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",
@@ -191,7 +190,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const token = localStorage.getItem('token');
     if (token) {
       try {
-        await fetch("http://127.0.0.1:8000/api/logout", {
+        await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/logout`, {
           method: "POST",
           headers: {
             'Authorization': `Bearer ${token}`,
